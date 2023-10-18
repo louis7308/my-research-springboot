@@ -22,7 +22,7 @@ jobs:
 
     - name: Docker Compose Start
       run: docker-compose -f ./docker-compose.yml up -d
-      
+
     - name: application.yml Create
       run: |
         mkdir ./src/main/resources
@@ -50,5 +50,19 @@ jobs:
 
     - name: Docker Push
       run: docker push ${{ secrets.DOCKER_USERNAME }}/github-action-demo
+
+    - name: Deploy to prod
+      uses: appleboy/ssh-action@master
+      id: deploy-prod
+      with:
+        host: ${{ secrets.HOST_PROD }}
+        username: ubuntu
+        keys: ${{ secrets.AWS_PRIVATE_KEY }}
+        script: |
+          sudo docker ps 
+          sudo docker pull ${{ secrets.DOCKER_USERNAME }}/github-action-demo
+          sudo docker run -d -p 8080:8080 ${{ secrets.DOCKER_USERNAME }}/github-action-demo
+          sudo docker image prune -f
+          
 
       

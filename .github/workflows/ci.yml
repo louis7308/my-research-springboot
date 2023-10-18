@@ -29,8 +29,8 @@ jobs:
 
       - name: local-application.yml Create
         run: |
-          mkdir ./startSpring/src/main/resources
-          touch ./startSpring/src/main/resources/application-local.yml
+          mkdir ./src/main/resources
+          touch ./src/main/resources/application-local.yml
           echo "${{ secrets.STARTSPRING }}" > ./src/main/resources/application-local.yml
           cat ./src/main/resources/application.yml
         shell: bash

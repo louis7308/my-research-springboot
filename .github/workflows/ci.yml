@@ -32,6 +32,7 @@ jobs:
           touch ./startSpring/src/main/resources/application-local.yml
           echo "${{ secrets.STARTSPRING }}" > ./src/main/resources/application-local.yml
           cat ./src/main/resources/application.yml
+        shell: bash
 
       - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew

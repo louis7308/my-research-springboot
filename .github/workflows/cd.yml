@@ -52,7 +52,7 @@ jobs:
       run: docker push ${{ secrets.DOCKER_USERNAME }}/github-action-demo
 
     - name: Deploy to prod
-      uses: appleboy/ssh-action@0.1.4
+      uses: appleboy/ssh-action@v0.1.4
       id: deploy-prod
       with:
         host: ${{ secrets.HOST_PROD }}

@@ -31,3 +31,7 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
         shell: bash
+
+      - name: Docker Compose Start
+        run: docker-compose -f ./docker-compose.yml up -d
+

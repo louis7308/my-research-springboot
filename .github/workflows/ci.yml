@@ -35,3 +35,8 @@ jobs:
       - name: Docker Compose Start
         run: docker-compose -f ./docker-compose.yml up -d
 
+      - name: local-application.yml Create
+        run: |
+          touch ./src/main/resources/application-local.yml
+          echo "${{ secrets.STARTSPRING }}" > ./src/main/resources/application-local.yml
+          cat ./src/main/resources/application.yml

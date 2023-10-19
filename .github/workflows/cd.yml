@@ -57,7 +57,7 @@ jobs:
       with:
         host: ${{ secrets.HOST_PROD }}
         username: ubuntu
-        keys: ${{ secrets.AWS_PRIVATE_KEY }}
+        key: ${{ secrets.AWS_PRIVATE_KEY }}
         script: |
           sudo docker ps 
           sudo docker pull ${{ secrets.DOCKER_USERNAME }}/github-action-demo

@@ -36,21 +36,29 @@ dependencies {
 
     runtimeOnly("com.mysql:mysql-connector-j")
 
-
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    // JUnit5
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5:1.3.50")
+    // AssertJ
+    testImplementation("org.assertj:assertj-core:3.13.2")
 }
 
 tasks.getByName<Jar>("jar") {
     enabled = false
 }
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        freeCompilerArgs += "-Xjsr305=strict"
-        jvmTarget = "17"
+tasks {
+    test {
+        useJUnitPlatform()
     }
-}
-
-tasks.withType<Test> {
-    useJUnitPlatform()
+    withType<KotlinCompile> {
+        kotlinOptions {
+            freeCompilerArgs = listOf("-Xjsr305=strict")
+            jvmTarget = "17"
+        }
+    }
+    withType<Test> {
+        useJUnitPlatform()
+    }
 }

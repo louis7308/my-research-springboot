@@ -3,7 +3,6 @@ package com.example.startspring
 import com.example.startspring.domain.book.Book
 import com.example.startspring.domain.book.BookFacade
 import com.example.startspring.domain.book.BookRepository
-import com.example.startspring.domain.book.BookService
 import com.example.startspring.domain.stock.Stock
 import com.example.startspring.domain.stock.StockRepository
 import org.junit.jupiter.api.Test
@@ -13,7 +12,6 @@ import org.springframework.data.repository.findByIdOrNull
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.Executors
 import kotlin.test.assertEquals
-import kotlin.test.assertTrue
 
 @SpringBootTest
 class BookTest @Autowired constructor(

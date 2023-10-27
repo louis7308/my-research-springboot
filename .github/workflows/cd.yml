@@ -36,7 +36,7 @@ jobs:
       shell: bash
 
     - name: Build With Gradle
-      run: ./gradlew clean build --warning-mode all
+      run: ./gradlew build
       shell: bash
 
     - name: Docker image build
